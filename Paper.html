@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>paper</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script>
+        /*rem 自适应*/
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 320) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+        
+        $(function () {
+            
+        })
+    </script>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        html,body {
+            height: 100%;
+        }
+        body {
+            position: relative;
+            font-size: .16rem;
+            font-family: "Microsoft YaHei UI";
+            -webkit-font-smoothing: antialiased;
+            background:rgb(241,238,236);
+        }
+        .fly-plane {
+
+            width: 83%;
+            position: absolute;
+            top: -.12rem;
+            left: .42rem;
+        }
+        .fly {
+            position: relative;
+        }
+        .fly-start {
+            display: inline-block;
+            padding: .24rem;
+            background: rgb(185,221,202);
+            border-radius: .24rem;
+            margin-left: .05rem;
+            margin-top: .05rem;
+        }
+        .main-title {
+            font-weight: normal;
+            font-size: .27rem;
+            position: absolute;
+            width: 100%;
+            top: .26rem;
+            text-align: center;
+            border-bottom: .03rem solid #888;
+        }
+        .vice-title {
+            position: absolute;
+            right: 0;
+            font-size: .16rem;
+            font-weight: normal;
+            margin-top: .05rem;
+            width: 90%;
+            text-align: right;
+            border-bottom: .01rem solid #000;
+        }
+        .main-fig {
+            margin-top: .35rem;
+
+        }
+        .main-pic {
+            width: 90%;
+            margin-left: 5%;
+        }
+        .main-fig figcaption {
+            font-size: .13rem;
+            width: 90%;
+            margin-left: 5%;
+            margin-top: .02rem;
+        }
+        .fig-item img {
+            width: 30%;
+            height: .65rem;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .fig-item {
+            margin-left: 5%;
+            /*margin-left: 5%;*/
+            margin-top: .1rem;
+            font-size: .13rem;
+        }
+        .fig-item figcaption {
+            width: 60%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .fig-right {
+            margin-left: .08rem;
+        }
+        .fig-left {
+            margin-right: .08rem;
+        }
+        #footer {
+            position: absolute;
+            bottom: 0;
+            height: .3rem;
+            border-top: .01rem solid #000;
+            width: 100%;
+        }
+        .school {
+
+            /* right: 0; */
+        display: inline-block;
+            /* top: .05rem; */
+            margin-top: .05rem;
+            border-top: .01rem solid #000;
+            width: 90%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="part-one">
+        <header id="header">
+            <div class="fly">
+                <span class="fly-start"></span>
+                <img src="1.png" alt="fly-plane" class="fly-plane">
+            </div>
+            <h1 class="main-title">这是报纸</h1>
+            <h2 class="vice-title">-this is a piece of paper </h2>
+        </header>
+        <figure class="main-fig">
+            <img src="a4131b5404c68e1ab2cbe7c641424dfc.jpg" alt="" class="main-pic" style="    height: 1.6rem;">
+            <figcaption>最近几年是杭州蓬勃发挥在那的高峰时期，生活在杭州的人们，纷纷唱起了社会主义好，共同期待美好的明天</figcaption>
+        </figure>
+        <figure class="fig-item">
+            <img src="a4131b5404c68e1ab2cbe7c641424dfc.jpg" alt="">
+            <figcaption class="fig-right">也与这就是语言不通牌的后果吧。使得使得使得，事实上大飒飒的</figcaption>
+        </figure>
+        <figure class="fig-item">
+            <figcaption class="fig-left">王老师姐多报，你们河沟了没有。反正就一个味道大说，一个味道对哒 对哒啊</figcaption>
+            <img src="a4131b5404c68e1ab2cbe7c641424dfc.jpg" alt="">
+        </figure>
+        <figure class="fig-item">
+            <img src="a4131b5404c68e1ab2cbe7c641424dfc.jpg" alt="">
+            <figcaption class="fig-right">说，你的英语六级是谁帮你过的1我爸爸不撒不撒八十八不散艾斯比撒八十</figcaption>
+        </figure>
+        <footer id="footer">
+            <span class="school">杭州电子科技大学</span>
+        </footer>
+    </div>
+</body>
+</html>
