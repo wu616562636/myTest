@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>paper</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="swiper-3.4.0.min.js"></script>
+    <link rel="stylesheet" href="swiper-3.4.0.min.css">
+    <script>
+        /*rem 自适应*/
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 320) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+
+        $(function () {
+
+            var bodyHeight = [];
+            var height = 0;
+            $(".swiper-slide").each(function () {
+                bodyHeight.push($(this).height());
+            });
+            var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                loop: false,
+                onSlideChangeStart: function(swiper){
+                    $(window).scrollTop(0);
+                    height = bodyHeight[swiper.activeIndex];
+                    $("body").css("height",function () {
+                        return height + "px";
+                    });
+                }
+            });
+        })
+    </script>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        html,body {
+            /*height: 100%;*/
+        }
+
+        body {
+            position: relative;
+            font-size: .16rem;
+            font-family: "Microsoft YaHei UI";
+            -webkit-font-smoothing: antialiased;
+            /*background:rgb(241,238,236);*/
+            background: url("img/background.jpg") no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .fly-plane {
+
+            width: 83%;
+            position: absolute;
+            top: -.12rem;
+            left: .42rem;
+        }
+        .fly {
+            position: relative;
+        }
+        .fly-start {
+            display: inline-block;
+            padding: .24rem;
+            background: rgb(177,143,148);
+            border-radius: .24rem;
+            margin-left: .05rem;
+            margin-top: .05rem;
+        }
+        .main-title {
+            font-weight: normal;
+            font-size: .22rem;
+            position: absolute;
+            width: 100%;
+            top: .36rem;
+            text-align: center;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            /* border-bottom: .03rem solid #888; */
+            border-bottom: .01rem solid #000;
+        }
+        .vice-title {
+            position: absolute;
+            right: 0;
+            font-size: .16rem;
+            font-weight: normal;
+            margin-top: .1rem;
+            padding-right: .1rem;
+            width: 85%;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            text-align: right;
+            border-bottom: .01rem solid #000;
+        }
+        .main-fig {
+            margin-top: .4rem;
+
+        }
+        .main-pic {
+            width: 90%;
+            margin-left: 5%;
+        }
+        .main-fig textarea {
+            font-size: .13rem;
+            width: 90%;
+            margin-left: 5%;
+            resize: none;
+            font-family: "Microsoft YaHei UI";
+            height: .8rem;
+            border: 0;
+            outline: 0;
+            background: inherit;
+            margin-top: .02rem;
+            line-height: .25rem;
+            text-indent: .2rem;
+        }
+        .fig-item img {
+            width: 45%;
+            height: 1rem;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .fig-item {
+            margin-left: 5%;
+            /*margin-left: 5%;*/
+            margin-top: .1rem;
+            font-size: .13rem;
+        }
+        .fig-item textarea {
+            width: 51%;
+            display: inline-block;
+            line-height: .2rem;
+            background: inherit;
+            height: 1.1rem;
+            resize: none;
+            border: 0;
+            outline: 0;
+            font-family: "Microsoft YaHei UI";
+            font-size: .1rem;
+            text-indent: .15rem;
+            vertical-align: top;
+        }
+        .fig-right {
+            margin-left: .05rem;
+        }
+        .fig-left {
+            margin-right: .05rem;
+        }
+        .footer {
+            /*position: absolute;*/
+            /*bottom: 0;*/
+            margin-top: .1rem;
+            height: .3rem;
+            border-top: .01rem solid #000;
+            width: 100%;
+        }
+        .school {
+
+            /* right: 0; */
+            display: inline-block;
+            /* top: .05rem; */
+            margin-top: .05rem;
+            border-top: .01rem solid #000;
+            width: 90%;
+            text-align: center;
+        }
+        .spread {
+            height: 100%;
+        }
+        .h5-header {
+            padding-bottom: .1rem;
+            border-bottom: .01rem solid #000;
+            position: relative;
+            margin-bottom: .2rem;
+        }
+        .h5-title {
+            font-weight: normal;
+            font-size: .2rem;
+            margin-top: .6rem;
+            margin-left: 1.3rem;
+            background: inherit;
+            border: 0;
+            outline:0;
+            width: 1.5rem;
+            /* overflow: hidden; */
+            text-align: center
+        }
+        .h5-vTitle {
+            position: absolute;
+            right: 0;
+            top: .8rem;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            text-align: right;
+            margin-top: 0.05rem;
+            font-size: .14rem;
+            font-weight: bold;
+            margin-right: .05rem;
+        }
+        .h5-date {
+            margin-top: .15rem;
+            font-size: .17rem;
+            margin-left: .15rem;
+        }
+        .h5-produce {
+            padding-left: .15rem;
+            padding-bottom: .08rem;
+            font-size: .17rem;
+            margin-top: .1rem;
+            border-bottom: .01rem solid #000;
+            width: 60%;
+        }
+        .h5-img {
+            display: inline-block;
+            vertical-align: top;
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+        .h5-items {
+            padding-left: .15rem;
+        }
+        .h5-fig {
+            display: inline-block;
+            font-size: .1rem;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            resize: none;
+            height: 1.1rem;
+            font-family: "Microsoft YaHei UI";
+            vertical-align: top;
+            width: 1.8rem;
+            line-height: .22rem;
+            text-indent: .22rem;
+        }
+        .h5-item {
+            margin-bottom: .2rem;
+        }
+        .h5-left {
+            margin-right: .05rem;
+        }
+        .h5-right {
+            margin-left: .05rem;
+        }
+        .tip-success {
+            margin-bottom: .15rem;
+            font-weight: bold;
+            font-size: .16rem;
+            margin-top: .7rem;
+            text-align: center;
+            height: .3rem;
+            line-height: .3rem;
+        }
+        .tip-icon {
+            position: relative;
+        }
+        .icon-sand {
+            position: absolute;
+            width: 2.4rem;
+            top: .4rem;
+            left: -.4rem;
+        }
+        .icon-border {
+            width: 1.4rem;
+            margin-left: 1.6rem;
+            transform: rotate(6deg);
+        }
+        .icon-coincide {
+            position: relative;
+        }
+        .icon-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1rem;
+        }
+        .tip-content {
+            margin-top: 1.3rem;
+            margin-left: .15rem;
+        }
+        .content-text {
+            line-height: .3rem;
+            margin-bottom: .1rem;
+        }
+        .icon-bottom {
+            width: 1.1rem;
+            margin-left: 2.1rem;
+        }
+        .tip-strong {
+            text-decoration: underline;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 .05rem;
+            font-weight: bold;
+        }
+        .school-icon {
+            position: absolute;
+            left: .05rem;
+            top: .05rem;
+            width: .48rem;
+            height: .48rem;
+            border-radius: .24rem;
+        }
+        .act-item {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .act-img {
+            display: block;
+            margin-bottom: .05rem;
+            width: 1rem;
+            height:.8rem;
+        }
+        .act-items {
+            margin-left: .05rem;
+        }
+        .act-fig {
+            width: 1rem;
+            font-size: .1rem;
+            font-family: "Microsoft YaHei UI";
+            border: 0;
+            outline: 0;
+            background: inherit;
+            height: 1.2rem;
+            resize: none;
+            line-height:.2rem;
+        }
+        .act-title {
+            font-weight: normal;
+            font-size: .22rem;
+            margin-top: .13rem;
+            margin-left: .2rem;
+            margin-bottom: .15rem;
+        }
+        .chat-title {
+            font-weight: normal;
+            font-size: .15rem;
+            border-top: .01rem solid #000;
+            border-bottom: .01rem solid #000;
+            width: 2.3rem;
+            padding-top: .05rem;
+            text-indent: .08rem;
+            padding-bottom: .05rem;
+            margin-bottom: .06rem;
+        }
+        .chat-words {
+            width: 75%;
+            font-family: "Microsoft YaHei UI";
+            background: inherit;
+            border: 0;
+            outline: 0;
+            resize: none;
+            margin-left: .15rem;
+            line-height: .2rem;
+            margin-top: .05rem;
+            font-size: .13rem;
+        }
+        .chat-to {
+            margin-left: .04rem;
+        }
+        .chat-item {
+            margin-bottom: .14rem;
+        }
+        .chat-person {
+            display: inline-block;
+            margin-left: .1rem;
+        }
+        .yearn-module {
+            position: absolute;
+            top: 2.7rem;
+            left: 2.65rem;
+            width: .8rem;
+        }
+        .yearn-point {
+            display: inline-block;
+            padding:.08rem;
+            background: #333;
+            border-radius: .08rem;
+        }
+        .yearn-text {
+            width: .12rem;
+        }
+        .yearn-part {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .yearn-img {
+            width: .25rem;
+            margin-top: -.4rem;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container spread">
+    <div class="swiper-wrapper spread">
+        <div class="swiper-slide spread">
+            <header id="header">
+                <div class="fly">
+                    <img src="img/hdu-icon.jpg" class="school-icon" alt="school-icon">
+                    <span class="fly-start"></span>
+                    <img src="img/plane.png" alt="fly-plane" class="fly-plane">
+                </div>
+                <input type="text" class="main-title" placeholder="杭州电子科技大学报">
+                <input class="vice-title" placeholder="Hangzhou Dianzi Unversity">
+            </header>
+            <figure class="main-fig">
+                <img src="img/index.jpg" alt="" class="main-pic" style="    height: 1.6rem;">
+                <textarea>杭州电子科技大学（Hangzhou Dianzi University），简称杭电，位于浙江省杭州市，是一所以电子信息和经济管理学科为特色的高等院校</textarea>
+            </figure>
+            <figure class="fig-item">
+                <img src="img/index2.jpg" alt="">
+                <textarea class="fig-right">汗水浸透衣裳，却影响不了我站军姿的姿势，整齐的步伐使我们的坚持，休息时的欢声笑语时时在脑海里浮现，那些汗水与泪水相伴的日子，我将牢牢记在心里</textarea>
+            </figure>
+            <figure class="fig-item">
+                <textarea class="fig-left">忆往昔，自有风雨话沧桑；看今朝，更续弦歌铸辉煌！笃学力行，守正求新，六十载饱含着杭电一甲子办学历程中的无数精彩，</textarea>
+                <img src="img/index3.jpg" alt="">
+            </figure>
+            <figure class="fig-item">
+                <img src="img/index4.jpg" alt="">
+                <textarea class="fig-right">晨晖盎然，步伐整齐，清风徐徐，飒爽英姿，在每个充满朝阳的早晨，都会有一支整齐充满激情的方阵，守护着鲜艳的五星红旗。</textarea>
+            </figure>
+            <footer class="footer">
+                <span class="school">杭州电子科技大学</span>
+            </footer>
+        </div>
+        <div class="swiper-slide spread">
+            <div class="h5-header">
+                <input type="text" class="h5-title" placeholder="我的杭电记忆">
+                <input class="h5-vTitle" placeholder="Memories of HDU">
+                <p class="h5-date">2017/5/21 星期日</p>
+                <p class="h5-produce">制作人：<span id="h5-producer">优咕饰</span></p>
+            </div>
+            <div class="h5-items">
+                <figure class="h5-item">
+                    <img src="img/memory1.jpg" class="h5-img" alt="">
+                    <textarea class="h5-fig h5-right">问鼎广场是我对杭电最独特的记忆。社团合照时难得开启的喷泉，在浸天水柱之后，我们在烟雨之中，嬉笑打闹无拘无束，透过水雾的画面我能记一辈子</textarea>
+                </figure>
+                <figure class="h5-item">
+                    <textarea class="h5-fig h5-left">东门外的豆腐年糕，带着满满的回忆，每当打包一份回寝室吃的时候，总会被它的量震惊，终于有一天把豆腐年糕整碗吃完，感觉自己那天一定很饿。</textarea>
+                    <img src="img/memory2.jpg" class="h5-img" alt="">
+                </figure>
+                <figure class="h5-item">
+                    <img src="img/memory3.jpg" class="h5-img" alt="">
+                    <textarea class="h5-fig h5-right">校长以四年前开学典礼上“你，为何而来”的“杭电之问”向同学们发问，大家回答“为尊严而来”，他指出，一个有尊严的人，身上必然有许多珍贵的素质，其中最关键的就是定力，在任何一个国度，有定力的人才能走得更远。</textarea>
+                </figure>
+            </div>
+            <footer class="footer">
+                <span class="school">杭州电子科技大学</span>
+            </footer>
+        </div>
+        <div class="swiper-slide spread">
+            <h1 class="act-title">社团/活动</h1>
+            <div class="yearn-module">
+                <div class="yearn-part">
+                    <span class="yearn-point"></span>
+                    <p class="yearn-text">我怀念的是绝对炙热</p>
+                </div>
+                <img src="img/yearn.png" class="yearn-part yearn-img" alt="yearn">
+            </div>
+            <div class="act-items">
+                <figure class="act-item">
+                    <img src="img/activity1.jpg" class="act-img" alt="act-img">
+                    <textarea class="act-fig">一把九百多的琴和刷错的和弦，陪了我好多年。乐队，永远是青春的代名词</textarea>
+                </figure>
+                <figure class="act-item">
+                    <img src="img/activity2.jpg" class="act-img" alt="act-img">
+                    <textarea class="act-fig">传球接球，投篮，篮球很简单，但是流淌的汗，受过的伤，得过的奖，都在告诉自己，别放弃。</textarea>
+                </figure>
+                <figure class="act-item">
+                    <img src="img/activity3.jpg" class="act-img" alt="act-img">
+                    <textarea class="act-fig">竞赛的结果固然重要，但是真正值得自己纪念的，是准备竞赛的过程中付出的努力。</textarea>
+                </figure>
+            </div>
+            <div class="chat">
+                <h2 class="chat-title">我想对你说</h2>
+                <div class="chat-item">
+                    <p class="chat-to">To:<span class="chat-person">老师</span></p>
+                    <textarea class="chat-words">老师，您会记得多少您带过的学生呢？其实很喜欢你，只是我真的不擅长编程。再没有期末考，老师您要怎样去考核我们呢？</textarea>
+                </div>
+                <div class="chat-item">
+                    <p class="chat-to">To:<span class="chat-person">同学</span></p>
+                    <textarea class="chat-words">xxx，记得你答应大家的一顿饭。</textarea>
+                </div>
+                <div class="chat-item">
+                    <p class="chat-to">To:<span class="chat-person">室友朋友</span></p>
+                    <textarea class="chat-words">有时候想跟室友再约一次阳光长跑，可是环顾四周坐在身边的人都已是同事</textarea>
+                </div>
+                <div class="chat-item">
+                    <p class="chat-to">To:<span class="chat-person">自己</span></p>
+                    <textarea class="chat-words">毕业前还想到学生活动中心做一场晚会，通一次宵。曾经幻想，我喜欢的女孩子是不是也住在公主楼呢。</textarea>
+                </div>
+            </div>
+            <footer class="footer">
+                <span class="school">杭州电子科技大学</span>
+            </footer>
+        </div>
+        <div class="swiper-slide spread">
+            <h1 class="tip-success">恭喜小主，你的专属纪念报已制作完毕</h1>
+            <div class="tip-icon">
+                <img src="img/sand-love.png" class="icon-sand" alt="sand-love">
+                <div class="icon-coincide">
+                    <img src="img/border.png" class="icon-border" alt="border">
+                    <img src="img/icon.png" class="icon-border icon-main" alt="icon">
+                </div>
+            </div>
+            <div class="tip-content">
+                <p class="content-text"><span class="tip-num">1.</span>快去分享让大家看看吧！<br/>
+                    也可以邀请更多人制作哦</p>
+                <p class="content-text"><span class="tip-num">2.</span>想印一张优质的报纸留念吗？<br/>
+                    就在<span class="tip-strong">优咕饰</span>后台留言【我要引报纸】吧！</p>
+            </div>
+            <img src="img/yougu-icon.jpg" alt="yougu-icon" class="icon-bottom">
+        </div>
+    </div>
+</div>
+</body>
+</html>
