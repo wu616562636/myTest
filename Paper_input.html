@@ -43,6 +43,88 @@
                 }
             });
 
+
+            //school数据绑定
+            $(".school").keyup(function () {
+                $(".school").val($(this).val());
+            });
+
+            //预置时间
+            var Day = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            var myDate = new Date();
+
+            function showDate(date){
+                if(date >= 10){
+                    return ""+date;
+                }else {
+                    return "0"+date;
+                }
+            }
+
+            function showDay(day) {
+                return Day[day];
+            }
+
+            var date="";
+            date=myDate.getFullYear()+"/"+showDate(myDate.getMonth()+1)+"/"+showDate(myDate.getDate())+" "+showDay(myDate.getDay());
+
+            $(".h5-date").val(date);
+
+            var figHolder = ["杭州电子科技大学（Hangzhou Dianzi University），简称杭电，位于浙江省杭州市，是一所以电子信息和经济管理学科为特色的高等院校",
+                            "汗水浸透衣裳，却影响不了我站军姿的姿势，整齐的步伐使我们的坚持，休息时的欢声笑语时时在脑海里浮现，那些汗水与泪水相伴的日子，我将牢牢记在心里",
+                            "忆往昔，自有风雨话沧桑；看今朝，更续弦歌铸辉煌！笃学力行，守正求新，六十载饱含着杭电一甲子办学历程中的无数精彩，",
+                            "晨晖盎然，步伐整齐，清风徐徐，飒爽英姿，在每个充满朝阳的早晨，都会有一支整齐充满激情的方阵，守护着鲜艳的五星红旗。"];
+
+            $(".fig-area").each(function (index,domEle) {
+                 $(domEle).attr("placeholder",figHolder[index]);
+            });
+
+            var h5Holder = ["问鼎广场是我对杭电最独特的记忆。社团合照时难得开启的喷泉，在浸天水柱之后，我们在烟雨之中，嬉笑打闹无拘无束，透过水雾的画面我能记一辈子",
+                            "东门外的豆腐年糕，带着满满的回忆，每当打包一份回寝室吃的时候，总会被它的量震惊，终于有一天把豆腐年糕整碗吃完，感觉自己那天一定很饿。",
+                            "校长以四年前开学典礼上“你，为何而来”的“杭电之问”向同学们发问，大家回答“为尊严而来”，他指出，一个有尊严的人，身上必然有许多珍贵的素质，其中最关键的就是定力，在任何一个国度，有定力的人才能走得更远。"];
+
+            $(".h5-fig").each(function (index,domEle) {
+                $(domEle).attr("placeholder",h5Holder[index]);
+            });
+
+            var actHolder = ["一把九百多的琴和刷错的和弦，陪了我好多年。乐队，永远是青春的代名词",
+                            "传球接球，投篮，篮球很简单，但是流淌的汗，受过的伤，得过的奖，都在告诉自己，别放弃。",
+                            "竞赛的结果固然重要，但是真正值得自己纪念的，是准备竞赛的过程中付出的努力。"];
+
+            $(".act-fig").each(function (index,domEle) {
+                $(domEle).attr("placeholder",actHolder[index]);
+            });
+
+            var chatHolder = ["老师，您会记得多少您带过的学生呢？其实很喜欢你，只是我真的不擅长编程。再没有期末考，老师您要怎样去考核我们呢？",
+                             "xxx，记得你答应大家的一顿饭。",
+                             "有时候想跟室友再约一次阳光长跑，可是环顾四周坐在身边的人都已是同事",
+                             "毕业前还想到学生活动中心做一场晚会，通一次宵。曾经幻想，我喜欢的女孩子是不是也住在公主楼呢。"];
+
+            $(".chat-words").each(function (index,domEle) {
+                $(domEle).attr("placeholder",chatHolder[index]);
+            });
+
+
+            //音频
+            var audio = document.createElement("audio");
+            audio.src = "mp3/days.mp3";
+            audio.addEventListener("canplaythrough", function () {
+                alert('音频文件已经准备好，随时待命');
+                audio.play();
+                $(".music").attr("play",1).addClass("rotate");
+            }, false);
+
+            $(".music").click(function () {
+                if($(this).attr("play")==1){
+                    audio.pause();
+                    $(".music").attr("play",0).removeClass("rotate");
+                }else {
+                    audio.play();
+                    $(".music").attr("play",1).addClass("rotate");
+                }
+            });
+
+
 //            //数据传输
 //            $.ajax({
 //                //url:"{{url('graduate/getschool')}}",
@@ -136,6 +218,14 @@
         })
     </script>
     <style>
+        @font-face {
+            font-family: 'iconfont';  /* project id 205279 */
+            src: url('//at.alicdn.com/t/font_icedl5s9q18gds4i.eot');
+            src: url('//at.alicdn.com/t/font_icedl5s9q18gds4i.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_icedl5s9q18gds4i.woff') format('woff'),
+            url('//at.alicdn.com/t/font_icedl5s9q18gds4i.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_icedl5s9q18gds4i.svg#iconfont') format('svg');
+        }
         * {
             margin:0;
             padding: 0;
@@ -262,14 +352,14 @@
             width: 100%;
         }
         .school {
-
-            /* right: 0; */
+            font-family: "Microsoft YaHei UI";
+            font-size: .15rem;
             display: inline-block;
-            /* top: .05rem; */
-            margin-top: .05rem;
-            border-top: .01rem solid #000;
-            width: 90%;
+            width: 100%;
             text-align: center;
+            background: inherit;
+            border: 0;
+            outline: 0;
         }
         .spread {
             height: 100%;
@@ -309,6 +399,10 @@
             margin-top: .15rem;
             font-size: .17rem;
             margin-left: .15rem;
+            background: inherit;
+            font-family: "Microsoft YaHei UI";
+            border: 0;
+            outline: 0;
         }
         .h5-produce {
             padding-left: .15rem;
@@ -437,8 +531,12 @@
             font-weight: normal;
             font-size: .22rem;
             margin-top: .13rem;
+            background: inherit;
+            outline: 0;
+            border: 0;
             margin-left: .2rem;
             margin-bottom: .15rem;
+            font-family:"Microsoft YaHei UI";
         }
         .chat-title {
             font-weight: normal;
@@ -472,6 +570,11 @@
         .chat-person {
             display: inline-block;
             margin-left: .1rem;
+            border: 0;
+            outline: 0;
+            background: inherit;
+            font-family: "Microsoft YaHei UI";
+            font-size: .16rem;
         }
         .yearn-module {
             position: absolute;
@@ -486,11 +589,28 @@
             border-radius: .08rem;
         }
         .yearn-text {
-            width: .12rem;
+            width: .16rem;
+            height: 2.2rem;
+            /*-webkit-writing-mode: vertical-rl;*/
+            /* vertical-align: top; */
+             /*writing-mode: vertical-lr;*/
+            writing-mode: vertical-lr;
+            display: inline-block;
+            background: inherit;
+            border: 0;
+            outline: 0;
+            font-size: .16rem;
+            font-family: "Microsoft YaHei UI";
+            /*word-wrap: break-word;*/
+            /*word-break: normal;*/
+        }
+        textarea::-webkit-input-placeholder {
+            color:#000;
         }
         .yearn-part {
             display: inline-block;
             vertical-align: top;
+            width: .16rem;
         }
         .yearn-img {
             width: .25rem;
@@ -499,9 +619,59 @@
         input::-webkit-input-placeholder {
             color:#000;
         }
+        .cut {
+            width: 90%;
+            color: #000;
+            /* border: .01rem solid #000; */
+            height: .01rem;
+            outline: 0;
+            border: 0;
+            margin-bottom: .03rem;
+            background: #000;
+            margin-top: .05rem;
+        }
+        #h5-producer {
+            border: 0;
+            outline: 0;
+            background: inherit;
+            display: inline-block;
+            width: .6rem;
+            font-size: .16rem;
+            font-family: "Microsoft YaHei UI";
+        }
+        .music {
+            position: absolute;
+            right: .1rem;
+            top:.1rem;
+            background: rgba(0,0,0,0);
+            border: 0;
+            outline: 0;
+            z-index: 999;
+        }
+        .music-icon {
+            display: inline-block;
+            vertical-align: top;
+            font-family: iconfont;
+            /*background:rgba(255,255,255,.5);*/
+            font-size: .3rem;
+        }
+        @keyframes rotate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .rotate {
+            animation: rotate 2.5s infinite linear;
+        }
+        
     </style>
 </head>
 <body>
+<!--音频-->
+<button class="music"><span class="music-icon">&#xe613;</span></button>
 <div class="swiper-container spread">
     <div class="swiper-wrapper spread">
         <div class="swiper-slide spread">
@@ -516,93 +686,96 @@
             </header>
             <figure class="main-fig">
                 <img src="img/index.jpg" alt="" class="main-pic" style="    height: 1.6rem;">
-                <textarea>杭州电子科技大学（Hangzhou Dianzi University），简称杭电，位于浙江省杭州市，是一所以电子信息和经济管理学科为特色的高等院校</textarea>
+                <textarea class="fig-area" placeholder=""></textarea>
             </figure>
             <figure class="fig-item">
                 <img src="img/index2.jpg" alt="">
-                <textarea class="fig-right">汗水浸透衣裳，却影响不了我站军姿的姿势，整齐的步伐使我们的坚持，休息时的欢声笑语时时在脑海里浮现，那些汗水与泪水相伴的日子，我将牢牢记在心里</textarea>
+                <textarea class="fig-area fig-right" placeholder=""></textarea>
             </figure>
             <figure class="fig-item">
-                <textarea class="fig-left">忆往昔，自有风雨话沧桑；看今朝，更续弦歌铸辉煌！笃学力行，守正求新，六十载饱含着杭电一甲子办学历程中的无数精彩，</textarea>
+                <textarea class="fig-area fig-left" placeholder=""></textarea>
                 <img src="img/index3.jpg" alt="">
             </figure>
             <figure class="fig-item">
                 <img src="img/index4.jpg" alt="">
-                <textarea class="fig-right">晨晖盎然，步伐整齐，清风徐徐，飒爽英姿，在每个充满朝阳的早晨，都会有一支整齐充满激情的方阵，守护着鲜艳的五星红旗。</textarea>
+                <textarea class="fig-area fig-right" placeholder=""></textarea>
             </figure>
             <footer class="footer">
-                <span class="school">杭州电子科技大学</span>
+                <hr class="cut">
+                <input type="text" class="school" placeholder="杭州电子科技大学">
             </footer>
         </div>
         <div class="swiper-slide spread">
             <div class="h5-header">
                 <input type="text" class="h5-title" placeholder="我的杭电记忆">
                 <input class="h5-vTitle" placeholder="Memories of HDU">
-                <p class="h5-date">2017/5/21 星期日</p>
-                <p class="h5-produce">制作人：<span id="h5-producer">优咕饰</span></p>
+                <input type="text" class="h5-date">
+                <p class="h5-produce">制作人：<input type="text" id="h5-producer" placeholder="优咕饰"></p>
             </div>
             <div class="h5-items">
                 <figure class="h5-item">
                     <img src="img/memory1.jpg" class="h5-img" alt="">
-                    <textarea class="h5-fig h5-right">问鼎广场是我对杭电最独特的记忆。社团合照时难得开启的喷泉，在浸天水柱之后，我们在烟雨之中，嬉笑打闹无拘无束，透过水雾的画面我能记一辈子</textarea>
+                    <textarea class="h5-fig h5-right"></textarea>
                 </figure>
                 <figure class="h5-item">
-                    <textarea class="h5-fig h5-left">东门外的豆腐年糕，带着满满的回忆，每当打包一份回寝室吃的时候，总会被它的量震惊，终于有一天把豆腐年糕整碗吃完，感觉自己那天一定很饿。</textarea>
+                    <textarea class="h5-fig h5-left"></textarea>
                     <img src="img/memory2.jpg" class="h5-img" alt="">
                 </figure>
                 <figure class="h5-item">
                     <img src="img/memory3.jpg" class="h5-img" alt="">
-                    <textarea class="h5-fig h5-right">校长以四年前开学典礼上“你，为何而来”的“杭电之问”向同学们发问，大家回答“为尊严而来”，他指出，一个有尊严的人，身上必然有许多珍贵的素质，其中最关键的就是定力，在任何一个国度，有定力的人才能走得更远。</textarea>
+                    <textarea class="h5-fig h5-right"></textarea>
                 </figure>
             </div>
             <footer class="footer">
-                <span class="school">杭州电子科技大学</span>
+                <hr class="cut">
+                <input type="text" class="school" placeholder="杭州电子科技大学">
             </footer>
         </div>
         <div class="swiper-slide spread">
-            <h1 class="act-title">社团/活动</h1>
+            <input type="text" class="act-title" placeholder="社团/活动">
             <div class="yearn-module">
                 <div class="yearn-part">
                     <span class="yearn-point"></span>
-                    <p class="yearn-text">我怀念的是绝对炙热</p>
+                    <textarea class="yearn-text" placeholder="我怀念的是绝对炙热"></textarea>
                 </div>
                 <img src="img/yearn.png" class="yearn-part yearn-img" alt="yearn">
             </div>
             <div class="act-items">
                 <figure class="act-item">
                     <img src="img/activity1.jpg" class="act-img" alt="act-img">
-                    <textarea class="act-fig">一把九百多的琴和刷错的和弦，陪了我好多年。乐队，永远是青春的代名词</textarea>
+                    <textarea class="act-fig"></textarea>
                 </figure>
                 <figure class="act-item">
                     <img src="img/activity2.jpg" class="act-img" alt="act-img">
-                    <textarea class="act-fig">传球接球，投篮，篮球很简单，但是流淌的汗，受过的伤，得过的奖，都在告诉自己，别放弃。</textarea>
+                    <textarea class="act-fig"></textarea>
                 </figure>
                 <figure class="act-item">
                     <img src="img/activity3.jpg" class="act-img" alt="act-img">
-                    <textarea class="act-fig">竞赛的结果固然重要，但是真正值得自己纪念的，是准备竞赛的过程中付出的努力。</textarea>
+                    <textarea class="act-fig"></textarea>
                 </figure>
             </div>
             <div class="chat">
                 <h2 class="chat-title">我想对你说</h2>
                 <div class="chat-item">
-                    <p class="chat-to">To:<span class="chat-person">老师</span></p>
-                    <textarea class="chat-words">老师，您会记得多少您带过的学生呢？其实很喜欢你，只是我真的不擅长编程。再没有期末考，老师您要怎样去考核我们呢？</textarea>
+                    <p class="chat-to">To:<input type="text" class="chat-person" placeholder="老师"></p>
+                    <textarea class="chat-words"></textarea>
                 </div>
                 <div class="chat-item">
-                    <p class="chat-to">To:<span class="chat-person">同学</span></p>
-                    <textarea class="chat-words">xxx，记得你答应大家的一顿饭。</textarea>
+                    <p class="chat-to">To:<input type="text" class="chat-person" placeholder="同学"></p>
+                    <textarea class="chat-words"></textarea>
                 </div>
                 <div class="chat-item">
-                    <p class="chat-to">To:<span class="chat-person">室友朋友</span></p>
-                    <textarea class="chat-words">有时候想跟室友再约一次阳光长跑，可是环顾四周坐在身边的人都已是同事</textarea>
+                    <p class="chat-to">To:<input type="text" class="chat-person" placeholder="室友朋友"></p>
+                    <textarea class="chat-words"></textarea>
                 </div>
                 <div class="chat-item">
-                    <p class="chat-to">To:<span class="chat-person">自己</span></p>
-                    <textarea class="chat-words">毕业前还想到学生活动中心做一场晚会，通一次宵。曾经幻想，我喜欢的女孩子是不是也住在公主楼呢。</textarea>
+                    <p class="chat-to">To:<input type="text" class="chat-person" placeholder="自己"></p>
+                    <textarea class="chat-words"></textarea>
                 </div>
             </div>
             <footer class="footer">
-                <span class="school">杭州电子科技大学</span>
+                <hr class="cut">
+                <input type="text" class="school" placeholder="杭州电子科技大学">
             </footer>
         </div>
         <div class="swiper-slide spread">
