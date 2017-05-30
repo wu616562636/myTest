@@ -42,6 +42,97 @@
                     });
                 }
             });
+
+//            //数据传输
+//            $.ajax({
+//                //url:"{{url('graduate/getschool')}}",
+//                type:"POST",
+//                dataType:"json",
+//                data:{
+//                    "schoolname":"传媒"
+//                },
+//                success:function (data) {
+//                    if(data.error==0){
+//                        console.log(data);
+//                    }
+//                }
+//            });
+//
+//            $.ajax({
+//                //url:"{{url('graduate/setpage1')}}",
+//                type:"POST",
+//                dataType:"json",
+//                data:{
+//                    "schoolname":$(".main-title").val(),
+//                    "title":$(".main-title").val(),
+//                    "titleeng":$(".vice-title").val(),
+//                    "content1":$(".main-fig textarea").val(),
+//                    "content2":$(".fig-item").eq(0).find("textarea").val(),
+//                    "content3":$(".fig-item").eq(1).find("textarea").val(),
+//                    "content4":$(".fig-item").eq(2).find("textarea").val(),
+//                    "img[0]":$(".main-pic").attr("src"),
+//                    "img[1]":$(".fig-item").eq(0).find("img").attr("src"),
+//                    "img[2]":$(".fig-item").eq(1).find("img").attr("src"),
+//                    "img[3]":$(".fig-item").eq(2).find("img").attr("src")
+//                },
+//                success:function (data) {
+//                    if(data.error==0){
+//                        console.log(data);
+//                    }
+//                }
+//            });
+//            $.ajax({
+//               // url:"{{url('graduate/setpage2')}}",
+//                type:"POST",
+//                dataType:"json",
+//                data:{
+//                    "id":"1",
+//                    "title":$(".h5-title").val(),
+//                    "titleeng":$(".h5-vTitle").val(),
+//                    "maketime":$(".h5-date").val(),
+//                    "author":$(".h5-produce").val(),
+//                    "content1":$(".h5-fig").eq(0).val(),
+//                    "content2":$(".h5-fig").eq(1).val(),
+//                    "content3":$(".h5-fig").eq(2).val(),
+//                    "img1":$(".h5-img").eq(0).attr("src"),
+//                    "img2":$(".h5-img").eq(1).attr("src"),
+//                    "img3":$(".h5-img").eq(2).attr("src")
+//                },
+//                success:function (data) {
+//                    if(data.error==0){
+//                        console.log(data);
+//                    }
+//                }
+//            });
+//
+//            $.ajax({
+//                url:"{{url(‘graduate/setpage3’)}}",
+//                type:"POST",
+//                dataType:"json",
+//                data:{
+//                    "id":"1",
+//                    "title":"title",
+//                    "img1":$(".act-img").eq(0).attr("src"),
+//                    "img2":$(".act-img").eq(1).attr("src"),
+//                    "img3":$(".act-img").eq(2).attr("src"),
+//                    "content1":$(".act-fig").eq(0).val(),
+//                    "content2":$(".act-fig").eq(1).val(),
+//                    "content3":$(".act-fig").eq(2).val(),
+//                    "to1":$(".chat-person").eq(0).val(),
+//                    "to2":$(".chat-person").eq(1).val(),
+//                    "to3":$(".chat-person").eq(2).val(),
+//                    "to4":$(".chat-person").eq(3).val(),
+//                    "tocontent1":$(".chat-words").eq(0).val(),
+//                    "tocontent2":$(".chat-words").eq(1).val(),
+//                    "tocontent3":$(".chat-words").eq(2).val(),
+//                    "tocontent4":$(".chat-words").eq(3).val()
+//                },
+//                success:function (data) {
+//                    if(data.error==0){
+//                        console.log(data);
+//                    }
+//                }
+//            })
         })
     </script>
     <style>
