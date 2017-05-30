@@ -8,11 +8,36 @@
         input::-webkit-input-placeholder {
             color:red;
         }
+    
     </style>
+    <script>
+        function showDate(date){
+            if(date >= 10){
+                return ""+date;
+            }else {
+                return "0"+date;
+            }
+        }
+        window.onload=function () {
+            var Day = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            function showDay(day) {
+                return Day[day];
+            }
+            var myDate = new Date();
+            console.log(myDate.getDay());
+            var date="";
+            date=myDate.getFullYear()+"/"+showDate(myDate.getMonth()+1)+"/"+showDate(myDate.getDate())+" "+showDay(myDate.getDay());
+            console.log(myDate.getFullYear());
+            console.log(date);
+            var d = document.getElementById("date");
+            d.textContent=date;
+        }
+    </script>
 </head>
 
 <body>
 <input type="text" placeholder="123213">
+<p id="date"></p>
 
 </body>
 </html>
